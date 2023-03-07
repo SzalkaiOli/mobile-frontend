@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -38,13 +39,18 @@ public class EmployeeListActivity extends AppCompatActivity {
                 .enqueue(new Callback<List<Employee>>() {
                     @Override
                     public void onResponse(Call<List<Employee>> call, Response<List<Employee>> response) {
-                        
+                        // response.body(): list of employees
+                        // loaded from the server
+                        populateListView(response.body());
                     }
 
                     @Override
                     public void onFailure(Call<List<Employee>> call, Throwable t) {
-
+                        Toast.makeText(EmployeeListActivity.this, "Failed to load employees", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    private void populateListView(List<Employee> body) {
     }
 }
