@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import hu.oliver.springclient.Adapter.EmployeeAdapter;
 import hu.oliver.springclient.Model.Employee;
 import hu.oliver.springclient.Retrofit.EmployeeApi;
 import hu.oliver.springclient.Retrofit.RetrofitService;
@@ -51,6 +52,8 @@ public class EmployeeListActivity extends AppCompatActivity {
                 });
     }
 
-    private void populateListView(List<Employee> body) {
+    private void populateListView(List<Employee> employeeList) {
+        EmployeeAdapter employeeAdapter = new EmployeeAdapter(employeeList);
+        recyclerView.setAdapter(employeeAdapter);
     }
 }
