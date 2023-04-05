@@ -1,10 +1,9 @@
 package hu.oliver.springclient;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -19,7 +18,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class EmployeeForm extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,13 +51,13 @@ public class MainActivity extends AppCompatActivity {
                     .enqueue(new Callback<Employee>() {
                         @Override
                         public void onResponse(Call<Employee> call, Response<Employee> response) {
-                            Toast.makeText(MainActivity.this, "Save Successful", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EmployeeForm.this, "Save Successful", Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
                         public void onFailure(Call<Employee> call, Throwable t) {
-                            Toast.makeText(MainActivity.this, "Save Failed", Toast.LENGTH_SHORT).show();
-                            Logger.getLogger(MainActivity.class.getName()).log(Level.SEVERE, "Error Occurred", t);
+                            Toast.makeText(EmployeeForm.this, "Save Failed", Toast.LENGTH_SHORT).show();
+                            Logger.getLogger(EmployeeForm.class.getName()).log(Level.SEVERE, "Error Occurred", t);
                         }
                     });
         });
