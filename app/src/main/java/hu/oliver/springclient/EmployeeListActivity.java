@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -29,6 +32,11 @@ public class EmployeeListActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.employeeList_recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        FloatingActionButton floatingActionButton = findViewById(R.id.employeeList_fab);
+        floatingActionButton.setOnClickListener(view -> {
+            startActivity(new Intent(this, EmployeeForm.class));
+        });
+
         loadEmployees();
     }
 
@@ -47,7 +55,8 @@ public class EmployeeListActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<List<Employee>> call, Throwable t) {
-                        Toast.makeText(EmployeeListActivity.this, "Failed to load employees", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EmployeeListActivity.this, "Failed to load employees",
+                                Toast.LENGTH_SHORT).show();
                     }
                 });
     }
