@@ -1,5 +1,6 @@
 package hu.oliver.springclient;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -60,6 +61,9 @@ public class EmployeeForm extends AppCompatActivity {
                             Logger.getLogger(EmployeeForm.class.getName()).log(Level.SEVERE, "Error Occurred", t);
                         }
                     });
+
+            startActivity(new Intent(this, EmployeeListActivity.class));
+            finish();
         });
     }
 }
